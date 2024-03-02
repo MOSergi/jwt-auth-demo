@@ -1,9 +1,9 @@
 import { errorFormatter } from "../utils/errorFormatter.js";
 import jwt from "jsonwebtoken";
 
-export const tokenValidator = (req, _res, next)=>{
+export const tokenValidator = (req, res, next)=>{
     if (!req.cookies.token){
-        throw errorFormatter(401, "Unauthorized");
+        throw errorFormatter(401, "Token not provided");
     }
 
     const token = req.cookies.token;
@@ -14,7 +14,8 @@ export const tokenValidator = (req, _res, next)=>{
     try {
         jwtValue = jwt.verify(token, process.env.JWT_SECRET);
     } catch(e){
-        throw errorFormatter(401, "jwt expired");
+        res.clearCookie("token");
+        throw errorFormatter(401, "Invalid token");
     }
 
     req.userId = jwtValue.id;

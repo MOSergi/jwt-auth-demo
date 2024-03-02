@@ -52,7 +52,16 @@ async function getUser(req, res){
 
 }
 
+function logoutUser(_req, res){
+    res.clearCookie("token");
+    res.status(200).json({
+        statusCode : 200,
+        message : "User log out"
+    })
+}
+
 export const UsersController = {
     postUser,
-    getUser
+    getUser,
+    logoutUser
 }

@@ -1,4 +1,4 @@
-# JWT AUTH DEMO
+# JWT BASIC AUTH DEMO
 
 ## idea
 

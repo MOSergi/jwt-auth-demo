@@ -39,6 +39,14 @@ async function authUser(req, res){
     })
 }
 
+function validateUserSession(_req, res){
+    res.status(200).json({
+        statusCode : 200,
+        message : "Valid session"
+    })
+}
+
 export const AuthController = {
-    authUser
+    authUser,
+    validateUserSession
 }

@@ -38,7 +38,8 @@ export default class Server {
         this.#app.use(express.json());
 
         this.#app.use(cors({
-            origin : "http://localhost:5173"
+            origin : "http://localhost:5173",
+            credentials : true
         }));
 
         this.#app.use(cookieParser());

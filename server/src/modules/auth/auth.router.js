@@ -6,7 +6,6 @@ import { tokenValidator } from "../../middleware/auth.middleware.js";
 const authRouter = Router();
 
 authRouter.post("/", asyncHandler(AuthController.authUser))
-//cambiar nombre ruta a validateSession
-authRouter.get('/validSession', tokenValidator, AuthController.validateUserSession)
+authRouter.get('/validate', tokenValidator, AuthController.validateUserSession)
 
 export default authRouter;
